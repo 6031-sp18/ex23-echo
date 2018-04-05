@@ -19,17 +19,17 @@ public class EchoClient {
      */
     public static void main(String[] args) {
         
-        final String echoServerHostname = "localhost";
-        final int echoServerPort = EchoServer.PORT;
+        final String hostname = "localhost";
+        final int port = 4589;
         
         try ( // try-with-resources: will automatically close the socket when the try statement exits
                 
             // connect to the server
-            final Socket socket = new Socket(echoServerHostname, echoServerPort);
+            final Socket socket = new Socket(hostname, port);
 
         ) {
 
-            System.err.println("connected to server; type a line to see it echoed");
+            System.err.println("connected to server; type a line to see it echoed, type quit to exit");
             talkToServer(socket);
             System.err.println("server disconnected");
             

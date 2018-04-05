@@ -11,9 +11,6 @@ import java.nio.charset.StandardCharsets;
 
 public class EchoServer {
 
-    /** Port number where the server listens for connections. */
-    public static final int PORT = 4589;
-
     // whether we can handle only one client at a time (single-threaded server)
     // or multiple clients (multi-threaded server)
     private static boolean ONE_CLIENT_AT_A_TIME = true;
@@ -24,9 +21,12 @@ public class EchoServer {
      * @param args unused
      */
     public static void main(String[] args) {
+
+        final int port = 4589;
+
         try ( // try-with-resources: automatically closes the socket declared here
                 // open the server socket
-                final ServerSocket serverSocket = new ServerSocket(EchoServer.PORT);
+                final ServerSocket serverSocket = new ServerSocket(port);
             ) {
             while (true) {
                 // get the next client connection
