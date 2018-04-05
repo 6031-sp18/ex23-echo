@@ -61,7 +61,7 @@ public class EchoServer {
             final BufferedReader readFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
         ) {
             while (true) {
-                // read a message is received from the client
+                // read a message from the client
                 final String message = readFromClient.readLine();
                 if (message == null) break; // client closed its side of the connection
                 if (message.equals("quit")) break; // client sent a quit message
