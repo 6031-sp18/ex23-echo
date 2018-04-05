@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class EchoServer {
 
@@ -53,11 +54,11 @@ public class EchoServer {
         try ( // try-with-resources: automatically closes the stream variables declared here
             // get an output stream for the client connection,
             // and wrap it in a PrintWriter so we can use print()/println() operations
-            final PrintWriter writeToClient = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+            final PrintWriter writeToClient = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
                 
             // get an input stream for the client connection,
             // and wrap it into a BufferedReader for the readLine() operation
-            final BufferedReader readFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+            final BufferedReader readFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
         ) {
             while (true) {
                 // read a message is received from the client

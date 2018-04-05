@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  */
@@ -44,15 +45,15 @@ public class EchoClient {
 
             // get an output stream for the server connection,
             // and wrap it in a PrintWriter so we can use print()/println() operations
-            final PrintWriter writeToServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+            final PrintWriter writeToServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
                 
             // get an input stream for the server connection,
             // and wrap it into a BufferedReader for the readLine() operation
-            final BufferedReader readFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+            final BufferedReader readFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 
             // wrap the standard input (the user's keyboard) in a BufferedReader
             // for the readLine() operation.
-            final BufferedReader readFromUser = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));  
+            final BufferedReader readFromUser = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         ) {
             
             while (true) {
