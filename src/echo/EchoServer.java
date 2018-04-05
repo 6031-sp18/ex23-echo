@@ -37,8 +37,10 @@ public class EchoServer {
                 } else {
                     // handle the client in a new thread, so that the main thread
                     // can resume waiting for another client
-                    new Thread(() -> {
-                        handleClient(socket);
+                    new Thread(new Runnable() {
+                        public void run() {
+                            handleClient(socket);
+                        }
                     }).start();
                 }
             }
